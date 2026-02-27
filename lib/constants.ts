@@ -2,7 +2,7 @@ export const SITE = {
   name: "Lic. Khevin Sánchez Zamora",
   title: "Lic. Khevin Sánchez Zamora | Abogado Asociado · Corporación GC",
   description:
-    "Abogado Asociado en Corporacion GC. Mas de 7 anos de experiencia en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional. Carnet 37920.",
+    "Abogado Asociado en Corporación GC. Más de 7 años de experiencia en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional. Carnet 37920.",
   url: "https://sanchezzamora.cr",
   locale: "es_CR",
   carnet: "37920",
@@ -21,7 +21,7 @@ export const CONTACT = {
 export const CREDENTIALS = [
   {
     metric: "7+",
-    label: "Anos de experiencia en litigio",
+    label: "Años de experiencia en litigio",
     detail: "Desde mayo 2019",
   },
   {
@@ -31,7 +31,7 @@ export const CREDENTIALS = [
   },
   {
     metric: "UCR",
-    label: "Egresado de la #1 en Centroamerica",
+    label: "Egresado de la #1 en Centroamérica",
     detail: "QS Latin America University Ranking 2026",
   },
 ] as const;
@@ -40,13 +40,13 @@ export const PRACTICE_AREAS = [
   {
     title: "Derecho Administrativo",
     description:
-      "Defensa y asesoria en procedimientos ante la Administracion Publica, recursos ordinarios y extraordinarios.",
+      "Defensa y asesoría en procedimientos ante la Administración Pública, recursos ordinarios y extraordinarios.",
     icon: "Scales" as const,
   },
   {
     title: "Contencioso Administrativo",
     description:
-      "Litigio estrategico ante el Tribunal Contencioso Administrativo en demandas contra el Estado.",
+      "Litigio estratégico ante el Tribunal Contencioso Administrativo en demandas contra el Estado.",
     icon: "Gavel" as const,
   },
   {
@@ -56,15 +56,15 @@ export const PRACTICE_AREAS = [
     icon: "ShieldCheck" as const,
   },
   {
-    title: "Contratacion Publica",
+    title: "Contratación Pública",
     description:
-      "Asesoria y litigio en materia de licitaciones, concursos publicos y contratos administrativos.",
+      "Asesoría y litigio en materia de licitaciones, concursos públicos y contratos administrativos.",
     icon: "FileText" as const,
   },
   {
-    title: "Litigio Estrategico",
+    title: "Litigio Estratégico",
     description:
-      "Gestion integral de casos de alta complejidad tecnica y relevancia juridica.",
+      "Gestión integral de casos de alta complejidad técnica y relevancia jurídica.",
     icon: "Strategy" as const,
   },
 ] as const;
@@ -72,26 +72,26 @@ export const PRACTICE_AREAS = [
 export const EXPERIENCE = [
   {
     role: "Abogado Asociado",
-    org: "Corporacion GC",
+    org: "Corporación GC",
     period: "Nov. 2025 - Presente",
     description:
-      "Litigio y asesoria juridica en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional. Colaboracion directa con el Dr. Oscar Gonzalez Camacho en casos de alta complejidad ante el TCA, Sala Constitucional, Sala Primera y diversas instancias administrativas.",
+      "Litigio y asesoría jurídica en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional. Colaboración directa con el Dr. Óscar González Camacho en casos de alta complejidad ante el TCA, Sala Constitucional, Sala Primera y diversas instancias administrativas.",
     highlight: true,
   },
   {
     role: "Paralegal Senior",
-    org: "Corporacion GC",
+    org: "Corporación GC",
     period: "2021 - 2025",
     description:
-      "Investigacion juridica exhaustiva, redaccion de demandas, recursos de casacion, amparos, acciones de inconstitucionalidad y medidas cautelares. Preparacion integral de audiencias orales y elaboracion de guias de interrogatorio.",
+      "Investigación jurídica exhaustiva, redacción de demandas, recursos de casación, amparos, acciones de inconstitucionalidad y medidas cautelares. Preparación integral de audiencias orales y elaboración de guías de interrogatorio.",
     highlight: false,
   },
   {
     role: "Paralegal Junior",
-    org: "Corporacion GC",
+    org: "Corporación GC",
     period: "2019 - 2021",
     description:
-      "Asistencia en investigacion de normativa, jurisprudencia y doctrina aplicable. Apoyo en la gestion de expedientes y redaccion de escritos procesales bajo supervision directa.",
+      "Asistencia en investigación de normativa, jurisprudencia y doctrina aplicable. Apoyo en la gestión de expedientes y redacción de escritos procesales bajo supervisión directa.",
     highlight: false,
   },
   {
@@ -99,7 +99,7 @@ export const EXPERIENCE = [
     org: "Facultad de Derecho, UCR",
     period: "Ago. 2020 - Ago. 2022",
     description:
-      "Representante ante Asamblea Plebiscitaria y Asamblea de Facultad. Participacion en decisiones institucionales y propuesta de mejoras curriculares.",
+      "Representante ante Asamblea Plebiscitaria y Asamblea de Facultad. Participación en decisiones institucionales y propuesta de mejoras curriculares.",
     highlight: false,
   },
   {
@@ -107,7 +107,7 @@ export const EXPERIENCE = [
     org: "FEUCR",
     period: "Ene. 2018 - Ene. 2019",
     description:
-      "Defensa de derechos estudiantiles ante autoridades universitarias. Asesoria legal y organizacion de talleres sobre normativa universitaria.",
+      "Defensa de derechos estudiantiles ante autoridades universitarias. Asesoría legal y organización de talleres sobre normativa universitaria.",
     highlight: false,
   },
   {
@@ -115,7 +115,7 @@ export const EXPERIENCE = [
     org: "Corte Suprema de Justicia",
     period: "Dic. 2017 - Dic. 2018",
     description:
-      "Asistencia en investigacion y analisis de casos constitucionales en el despacho del Magistrado Paul Rueda Leal. Redaccion de borradores de resoluciones.",
+      "Asistencia en investigación y análisis de casos constitucionales en el despacho del Magistrado Paul Rueda Leal. Redacción de borradores de resoluciones.",
     highlight: false,
   },
 ] as const;
@@ -129,6 +129,6 @@ export const NAV_LINKS = [
   { label: "Inicio", href: "#inicio" },
   { label: "Perfil", href: "#perfil" },
   { label: "Trayectoria", href: "#trayectoria" },
-  { label: "Articulos", href: "/articulos" },
+  { label: "Artículos", href: "/articulos" },
   { label: "Contacto", href: "#contacto" },
 ] as const;

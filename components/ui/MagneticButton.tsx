@@ -1,7 +1,8 @@
 "use client";
 
-import { useMotionValue, useTransform, motion, useSpring } from "framer-motion";
+import { useMotionValue, motion, useSpring } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 export function MagneticButton({
   children,
@@ -42,14 +43,16 @@ export function MagneticButton({
 
   const variants = {
     primary:
-      "bg-burgundy text-cream px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-burgundy-light active:scale-[0.98]",
+      "bg-burgundy text-white px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-burgundy-light active:scale-[0.98]",
     secondary:
-      "bg-charcoal text-cream px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-dark-bg active:scale-[0.98]",
+      "bg-charcoal text-white px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-dark-bg active:scale-[0.98]",
     outline:
       "border border-gold/30 text-gold px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-gold/5 active:scale-[0.98]",
   };
 
-  const Tag = href ? "a" : "button";
+  const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
+  const isExternal = href && !isInternal;
+  const combinedClassName = `${baseStyles} ${variants[variant]} ${className}`;
 
   return (
     <motion.div
@@ -59,13 +62,25 @@ export function MagneticButton({
       onMouseLeave={handleMouseLeave}
       className="inline-block"
     >
-      <Tag
-        href={href}
-        onClick={onClick}
-        className={`${baseStyles} ${variants[variant]} ${className}`}
-      >
-        {children}
-      </Tag>
+      {isInternal ? (
+        <Link href={href} onClick={onClick} className={combinedClassName}>
+          {children}
+        </Link>
+      ) : isExternal ? (
+        <a
+          href={href}
+          onClick={onClick}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={combinedClassName}
+        >
+          {children}
+        </a>
+      ) : (
+        <button onClick={onClick} className={combinedClassName}>
+          {children}
+        </button>
+      )}
     </motion.div>
   );
 }

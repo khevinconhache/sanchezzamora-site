@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { CONTACT, NAV_LINKS } from "@/lib/constants";
 import {
@@ -24,12 +26,12 @@ export function Footer() {
                   LIC. KHEVIN SÁNCHEZ ZAMORA
                 </div>
                 <div className="text-[10px] tracking-[0.25em] text-cream/40 mt-1">
-                  ABOGADO ASOCIADO · CORPORACION GC
+                  ABOGADO ASOCIADO · CORPORACIÓN GC
                 </div>
               </div>
             </div>
             <p className="text-sm leading-relaxed max-w-[38ch] text-cream/50">
-              Litigio estrategico en Derecho Administrativo, Contencioso
+              Litigio estratégico en Derecho Administrativo, Contencioso
               Administrativo y Derecho Constitucional.
             </p>
             <div className="flex items-center gap-3 mt-6">
@@ -61,7 +63,7 @@ export function Footer() {
               <a
                 href={`tel:${CONTACT.phoneRaw}`}
                 className="p-2 rounded-lg border border-cream/12 hover:border-gold/40 hover:text-gold transition-all duration-300"
-                aria-label="Telefono"
+                aria-label="Teléfono"
               >
                 <Phone size={18} weight="regular" />
               </a>
@@ -71,18 +73,28 @@ export function Footer() {
           {/* Nav */}
           <div>
             <div className="text-[10px] tracking-[0.25em] uppercase text-cream/40 mb-5">
-              Navegacion
+              Navegación
             </div>
             <div className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm text-cream/55 hover:text-gold transition-colors duration-300"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {NAV_LINKS.map((link) =>
+                link.href.startsWith("/") ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-cream/55 hover:text-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-cream/55 hover:text-gold transition-colors duration-300"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
             </div>
           </div>
 
@@ -92,15 +104,17 @@ export function Footer() {
               Firma
             </div>
             <div className="flex items-center gap-3 mb-3">
-              <img
+              <Image
                 src="/images/logo-gc.png"
-                alt="Corporacion GC"
+                alt="Corporación GC"
+                width={48}
+                height={48}
                 className="h-10 w-auto opacity-60 dark:opacity-90 dark:brightness-0 dark:invert"
               />
             </div>
             <p className="text-sm text-cream/50 leading-relaxed">
-              Corporacion GC, fundada por el Dr. Oscar Gonzalez Camacho,
-              coautor del Codigo Procesal Contencioso Administrativo.
+              Corporación GC, fundada por el Dr. Óscar González Camacho,
+              co-redactor del Código Procesal Contencioso Administrativo.
             </p>
           </div>
         </div>

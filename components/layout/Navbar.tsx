@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
 import { Logo } from "@/components/ui/Logo";
@@ -33,13 +34,13 @@ export function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled
-            ? "bg-surface/95 backdrop-blur-xl shadow-[0_1px_0_rgba(196,162,101,0.08)]"
+            ? "bg-surface backdrop-blur-xl shadow-[0_1px_0_rgba(196,162,101,0.08)]"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <Logo
               size={36}
               primary="currentColor"
@@ -54,19 +55,29 @@ export function Navbar() {
                 ABOGADO
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop links + toggle */}
           <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-xs tracking-[0.12em] uppercase text-cream/60 hover:text-gold transition-colors duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs tracking-[0.12em] uppercase text-cream/60 hover:text-gold transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs tracking-[0.12em] uppercase text-cream/60 hover:text-gold transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             <ThemeToggle />
           </div>
 
@@ -76,7 +87,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-cream/70 hover:text-gold transition-colors"
-              aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
+              aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {mobileOpen ? <X size={22} weight="light" /> : <List size={22} weight="light" />}
             </button>
@@ -99,7 +110,7 @@ export function Navbar() {
               <button
                 onClick={() => setMobileOpen(false)}
                 className="p-2 text-cream/70"
-                aria-label="Cerrar menu"
+                aria-label="Cerrar menú"
               >
                 <X size={22} weight="light" />
               </button>
@@ -121,7 +132,7 @@ export function Navbar() {
             </div>
             <div className="absolute bottom-12 left-6 right-6">
               <div className="text-xs tracking-[0.2em] text-cream/30 uppercase">
-                Corporacion GC
+                Corporación GC
               </div>
             </div>
           </motion.div>

@@ -31,7 +31,7 @@ export function getAllArticles(): ArticleMeta[] {
 
     return {
       slug: file.replace(/\.md$/, ""),
-      title: (data.title as string) || "Sin titulo",
+      title: (data.title as string) || "Sin título",
       date: (data.date as string) || "",
       excerpt: (data.excerpt as string) || "",
       tags: (data.tags as string[]) || [],
@@ -54,7 +54,7 @@ export function getArticleBySlug(slug: string): Article | null {
 
   return {
     slug,
-    title: (data.title as string) || "Sin titulo",
+    title: (data.title as string) || "Sin título",
     date: (data.date as string) || "",
     excerpt: (data.excerpt as string) || "",
     tags: (data.tags as string[]) || [],

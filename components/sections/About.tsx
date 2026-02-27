@@ -39,33 +39,33 @@ export function About() {
                 Litigio de alto nivel
                 <br />
                 con{" "}
-                <span className="text-gold">precision juridica</span>
+                <span className="text-gold">precisión jurídica</span>
               </h2>
             </AnimatedEntry>
 
             <AnimatedEntry delay={0.2}>
               <p className="mt-6 text-base text-cream/60 leading-relaxed max-w-[58ch]">
-                Como Abogado Asociado de Corporacion GC, trabajo en
-                colaboracion directa y constante con el Dr. Oscar Gonzalez
-                Camacho — coautor del Codigo Procesal Contencioso
-                Administrativo — en la gestion y estrategia de casos de alta
-                complejidad tecnica.
+                Como Abogado Asociado de Corporación GC, trabajo en
+                colaboración directa y constante con el Dr. Óscar González
+                Camacho — co-redactor del Código Procesal Contencioso
+                Administrativo — en la gestión y estrategia de casos de alta
+                complejidad técnica.
               </p>
             </AnimatedEntry>
 
             <AnimatedEntry delay={0.3}>
               <p className="mt-4 text-base text-cream/60 leading-relaxed max-w-[58ch]">
-                Mi experiencia abarca desde la investigacion juridica exhaustiva
-                y redaccion de escritos procesales, hasta la preparacion
-                integral de audiencias orales ante las mas altas instancias
-                judiciales del pais.
+                Mi experiencia abarca desde la investigación jurídica exhaustiva
+                y redacción de escritos procesales, hasta la preparación
+                integral de audiencias orales ante las más altas instancias
+                judiciales del país.
               </p>
             </AnimatedEntry>
 
             <AnimatedEntry delay={0.4}>
               <div className="mt-8 p-5 rounded-xl border border-cream/[0.08] bg-cream/[0.03]">
                 <div className="text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-3">
-                  Formacion academica
+                  Formación académica
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-baseline gap-2">
@@ -83,11 +83,11 @@ export function About() {
                   </div>
                 </div>
                 <div className="mt-3 text-[10px] text-cream/40">
-                  Tesis: Implementacion de IA en la administracion de justicia costarricense
+                  Tesis: Implementación de IA en la administración de justicia costarricense
                 </div>
                 <div className="mt-2 text-[10px] text-cream/40">
                   3er mejor promedio — II Convocatoria, Examen de Excelencia
-                  Academica del Colegio de Abogados y Abogadas de Costa Rica, 2025
+                  Académica del Colegio de Abogados y Abogadas de Costa Rica, 2025
                 </div>
               </div>
             </AnimatedEntry>
@@ -99,7 +99,7 @@ export function About() {
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-px w-8 bg-burgundy/50" />
                 <span className="text-[10px] tracking-[0.25em] uppercase text-cream/45 font-medium">
-                  Areas de practica
+                  Áreas de práctica
                 </span>
               </div>
             </AnimatedEntry>

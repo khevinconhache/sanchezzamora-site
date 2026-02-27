@@ -185,3 +185,15 @@ body::after {
   border-top: 1px solid #1C1C1E15;
   margin: 2rem 0;
 }
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #C4A265;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Compensate for fixed navbar on hash navigation */
+html {
+  scroll-padding-top: 5rem;
+}

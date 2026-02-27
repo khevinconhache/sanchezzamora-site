@@ -29,8 +29,17 @@ export const metadata: Metadata = {
     locale: SITE.locale,
     type: "website",
   },
+  twitter: {
+    card: "summary",
+    title: SITE.title,
+    description: SITE.description,
+  },
   icons: {
     icon: "/favicon.svg",
+  },
+  other: {
+    "theme-color": "#6B1D3A",
+    "apple-mobile-web-app-capable": "yes",
   },
 };
 

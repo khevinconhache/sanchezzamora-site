@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -46,13 +47,13 @@ export default async function ArticlePage({
         <div className="pt-28 md:pt-36 pb-20 md:pb-28">
           <div className="max-w-[800px] mx-auto px-6 md:px-10">
             {/* Back */}
-            <a
+            <Link
               href="/articulos"
               className="inline-flex items-center gap-1.5 text-xs text-cream/40 hover:text-gold transition-colors duration-300 mb-10"
             >
               <ArrowLeft size={14} weight="regular" />
-              Todos los articulos
-            </a>
+              Todos los artículos
+            </Link>
 
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-4 mb-6">
@@ -108,13 +109,13 @@ export default async function ArticlePage({
 
             {/* Bottom nav */}
             <div className="mt-16 pt-8 border-t border-cream/[0.06]">
-              <a
+              <Link
                 href="/articulos"
                 className="inline-flex items-center gap-1.5 text-xs text-cream/40 hover:text-gold transition-colors duration-300"
               >
                 <ArrowLeft size={14} weight="regular" />
-                Volver a articulos
-              </a>
+                Volver a artículos
+              </Link>
             </div>
           </div>
         </div>

@@ -33,7 +33,7 @@ export function Experience() {
             <AnimatedEntry delay={0.2}>
               <p className="mt-5 text-sm text-cream/50 leading-relaxed max-w-[35ch]">
                 Desde la Sala Constitucional hasta el litigio privado de alto
-                nivel, un recorrido construido con rigor y dedicacion.
+                nivel, un recorrido construido con rigor y dedicación.
               </p>
             </AnimatedEntry>
           </div>
@@ -49,7 +49,7 @@ export function Experience() {
                   <div
                     className={`relative pl-10 py-5 rounded-xl transition-colors duration-300 ${
                       exp.highlight
-                        ? "bg-burgundy/[0.08] border border-burgundy/[0.15]"
+                        ? "bg-gold/[0.06] border border-gold/[0.15]"
                         : ""
                     }`}
                   >
@@ -81,7 +81,7 @@ export function Experience() {
 
                     {exp.highlight && (
                       <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-gold/[0.1] text-gold text-[10px] tracking-wide font-medium">
-                        Posicion actual
+                        Posición actual
                       </div>
                     )}
                   </div>
@@ -93,20 +93,20 @@ export function Experience() {
             <StaggerItem>
               <div className="relative pl-10 mt-8 pt-6 border-t border-cream/[0.08]">
                 <div className="text-[10px] tracking-[0.2em] uppercase text-cream/40 mb-3">
-                  Investigacion destacada
+                  Investigación destacada
                 </div>
                 <h3 className="text-sm font-semibold text-cream/90 tracking-tight max-w-[55ch]">
-                  Implementacion de sistemas de IA en la administracion de
+                  Implementación de sistemas de IA en la administración de
                   justicia costarricense
                 </h3>
                 <p className="mt-2 text-xs text-cream/50 leading-relaxed max-w-[55ch]">
-                  Trabajo Final de Graduacion que analiza la integracion de
-                  inteligencia artificial en el ambito judicial desde el marco
-                  normativo de la Union Europea (EU AI Act), proponiendo una
-                  hoja de ruta para su adopcion segura en Costa Rica.
+                  Trabajo Final de Graduación que analiza la integración de
+                  inteligencia artificial en el ámbito judicial desde el marco
+                  normativo de la Unión Europea (EU AI Act), proponiendo una
+                  hoja de ruta para su adopción segura en Costa Rica.
                 </p>
                 <div className="mt-2 text-[10px] text-cream/35">
-                  Director: Dr. Oscar Gonzalez Camacho — UCR, 2025
+                  Director: Dr. Óscar González Camacho — UCR, 2025
                 </div>
               </div>
             </StaggerItem>

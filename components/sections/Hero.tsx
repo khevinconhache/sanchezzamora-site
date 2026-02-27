@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { AnimatedEntry } from "@/components/ui/AnimatedEntry";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowDown } from "@phosphor-icons/react";
@@ -10,8 +12,8 @@ export function Hero() {
       id="inicio"
       className="relative min-h-[100dvh] bg-surface overflow-hidden"
     >
-      {/* Subtle burgundy gradient accent */}
-      <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-burgundy/[0.08] to-transparent pointer-events-none" />
+      {/* Subtle burgundy gradient accent — dark mode only */}
+      <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-burgundy/[0.08] to-transparent pointer-events-none hidden dark:block" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 pt-28 md:pt-0 md:min-h-[100dvh] grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-12 items-center">
         {/* Left — Content */}
@@ -20,7 +22,7 @@ export function Hero() {
             <div className="flex items-center gap-3 mb-8">
               <div className="h-px w-8 bg-gold" />
               <span className="text-[11px] tracking-[0.25em] uppercase text-cream/50 font-medium">
-                Abogado Asociado · Corporacion GC
+                Abogado Asociado · Corporación GC
               </span>
             </div>
           </AnimatedEntry>
@@ -46,9 +48,9 @@ export function Hero() {
 
           <AnimatedEntry delay={0.5}>
             <p className="mt-4 text-sm text-cream/45 leading-relaxed max-w-[55ch]">
-              Mas de 7 anos de experiencia en litigio de alta complejidad.
-              Colaboracion directa con el Dr. Oscar Gonzalez Camacho,
-              coautor del Codigo Procesal Contencioso Administrativo.
+              Más de 7 años de experiencia en litigio de alta complejidad.
+              Colaboración directa con el Dr. Óscar González Camacho,
+              co-redactor del Código Procesal Contencioso Administrativo.
             </p>
           </AnimatedEntry>
 
@@ -64,7 +66,7 @@ export function Hero() {
                 Contactar
               </MagneticButton>
               <MagneticButton href="/articulos" variant="outline">
-                Articulos
+                Artículos
               </MagneticButton>
             </div>
           </AnimatedEntry>
@@ -78,9 +80,12 @@ export function Hero() {
 
             {/* Photo */}
             <div className="relative w-[80%] md:w-[85%] rounded-[1.5rem] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]">
-              <img
+              <Image
                 src="/images/foto-perfil.jpeg"
                 alt="Lic. Khevin Sánchez Zamora"
+                width={768}
+                height={1024}
+                priority
                 className="w-full h-auto object-cover"
               />
               {/* Bottom fade */}
@@ -90,14 +95,16 @@ export function Hero() {
             {/* Floating badge — Corporacion GC */}
             <div className="absolute bottom-6 left-0 bg-surface/95 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-cream/[0.06]">
               <div className="flex items-center gap-3">
-                <img
+                <Image
                   src="/images/logo-gc.png"
-                  alt="Corporacion GC"
+                  alt="Corporación GC"
+                  width={40}
+                  height={40}
                   className="h-8 w-auto opacity-60 dark:opacity-90 dark:brightness-0 dark:invert"
                 />
                 <div>
                   <div className="text-[10px] tracking-[0.12em] text-cream/70 font-medium">
-                    CORPORACION GC
+                    CORPORACIÓN GC
                   </div>
                   <div className="text-[9px] text-cream/40">
                     Abogado Asociado

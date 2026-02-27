@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { AnimatedEntry, StaggerContainer, StaggerItem } from "@/components/ui/AnimatedEntry";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowRight, FilePdf, Article } from "@phosphor-icons/react";
@@ -34,15 +35,15 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
 
             <AnimatedEntry delay={0.1}>
               <h2 className="font-display text-3xl md:text-5xl tracking-tighter leading-[1.05] text-cream">
-                Articulos y{" "}
-                <span className="text-burgundy">analisis juridico</span>
+                Artículos y{" "}
+                <span className="text-burgundy">análisis jurídico</span>
               </h2>
             </AnimatedEntry>
 
             <AnimatedEntry delay={0.2}>
               <p className="mt-4 text-sm text-cream/55 leading-relaxed max-w-[50ch]">
                 Contenido especializado en Derecho Administrativo, Contencioso
-                Administrativo y temas de actualidad juridica.
+                Administrativo y temas de actualidad jurídica.
               </p>
             </AnimatedEntry>
           </div>
@@ -64,7 +65,7 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
           >
             {articles.slice(0, 3).map((article, i) => (
               <StaggerItem key={article.slug}>
-                <a
+                <Link
                   href={`/articulos/${article.slug}`}
                   className={`group block p-6 rounded-xl border border-cream/[0.08] bg-cream/[0.03] hover:border-burgundy/20 transition-all duration-400 ${
                     i === 0 ? "md:row-span-2" : ""
@@ -85,7 +86,7 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
                       )}
                     </div>
                     <span className="text-[10px] tracking-wider uppercase text-cream/45">
-                      {article.type === "pdf" ? "PDF" : "Articulo"}
+                      {article.type === "pdf" ? "PDF" : "Artículo"}
                     </span>
                     <span className="text-[10px] text-cream/30 ml-auto">
                       {new Date(article.date).toLocaleDateString("es-CR", {
@@ -119,7 +120,7 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
                       ))}
                     </div>
                   )}
-                </a>
+                </Link>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -132,10 +133,10 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
                 className="mx-auto text-cream/20 mb-4"
               />
               <p className="text-sm text-cream/45 mb-1">
-                Proximamente
+                Próximamente
               </p>
               <p className="text-xs text-cream/35">
-                Los articulos y publicaciones apareceran aqui.
+                Los artículos y publicaciones aparecerán aquí.
               </p>
             </div>
           </AnimatedEntry>

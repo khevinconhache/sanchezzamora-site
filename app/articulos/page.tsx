@@ -1,12 +1,13 @@
+import Link from "next/link";
 import { getAllArticles, formatDate } from "@/lib/articles";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FilePdf, Article, ArrowLeft } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata = {
-  title: "Articulos | Lic. Khevin Sánchez Zamora",
+  title: "Artículos | Lic. Khevin Sánchez Zamora",
   description:
-    "Publicaciones y analisis juridico en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional.",
+    "Publicaciones y análisis jurídico en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional.",
 };
 
 export default function ArticulosPage() {
@@ -19,13 +20,13 @@ export default function ArticulosPage() {
         {/* Header */}
         <div className="pt-28 md:pt-36 pb-12 md:pb-16">
           <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-1.5 text-xs text-cream/40 hover:text-gold transition-colors duration-300 mb-8"
             >
               <ArrowLeft size={14} weight="regular" />
               Volver al inicio
-            </a>
+            </Link>
 
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-8 bg-gold" />
@@ -35,12 +36,12 @@ export default function ArticulosPage() {
             </div>
 
             <h1 className="font-display text-3xl md:text-5xl tracking-tighter leading-[1.05] text-cream">
-              Articulos y{" "}
-              <span className="text-burgundy">analisis juridico</span>
+              Artículos y{" "}
+              <span className="text-burgundy">análisis jurídico</span>
             </h1>
             <p className="mt-4 text-sm text-cream/45 leading-relaxed max-w-[55ch]">
               Contenido especializado en Derecho Administrativo, Contencioso
-              Administrativo y temas de actualidad juridica.
+              Administrativo y temas de actualidad jurídica.
             </p>
           </div>
         </div>
@@ -50,7 +51,7 @@ export default function ArticulosPage() {
           {articles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {articles.map((article) => (
-                <a
+                <Link
                   key={article.slug}
                   href={`/articulos/${article.slug}`}
                   className="group block p-6 rounded-xl border border-cream/[0.06] bg-cream/[0.02] hover:border-burgundy/20 transition-all duration-400"
@@ -70,7 +71,7 @@ export default function ArticulosPage() {
                       )}
                     </div>
                     <span className="text-[10px] tracking-wider uppercase text-cream/30">
-                      {article.type === "pdf" ? "PDF" : "Articulo"}
+                      {article.type === "pdf" ? "PDF" : "Artículo"}
                     </span>
                     <span className="text-[10px] text-cream/20 ml-auto">
                       {formatDate(article.date)}
@@ -97,7 +98,7 @@ export default function ArticulosPage() {
                       ))}
                     </div>
                   )}
-                </a>
+                </Link>
               ))}
             </div>
           ) : (
@@ -108,10 +109,10 @@ export default function ArticulosPage() {
                 className="mx-auto text-cream/15 mb-4"
               />
               <p className="text-base text-cream/35 font-display mb-2">
-                Proximamente
+                Próximamente
               </p>
               <p className="text-xs text-cream/25 max-w-[40ch] mx-auto">
-                Los articulos y publicaciones juridicas apareceran aqui. Vuelve pronto.
+                Los artículos y publicaciones jurídicas aparecerán aquí. Vuelve pronto.
               </p>
             </div>
           )}
