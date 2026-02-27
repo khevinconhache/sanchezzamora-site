@@ -1,0 +1,70 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { Sun, Moon } from "@phosphor-icons/react";
+import { motion, AnimatePresence } from "framer-motion";
+
+export function ThemeToggle({ className = "" }: { className?: string }) {
+  const [dark, setDark] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem("theme");
+    if (stored === "light") {
+      setDark(false);
+      document.documentElement.classList.remove("dark");
+    } else {
+      setDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  if (!mounted) return <div className={`w-8 h-8 ${className}`} />;
+
+  return (
+    <button
+      onClick={toggle}
+      className={`p-2 rounded-lg border border-cream/10 hover:border-gold/40 text-cream/50 hover:text-gold transition-all duration-300 ${className}`}
+      aria-label={dark ? "Cambiar a modo diurno" : "Cambiar a modo nocturno"}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {dark ? (
+          <motion.span
+            key="sun"
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="block"
+          >
+            <Sun size={16} weight="duotone" />
+          </motion.span>
+        ) : (
+          <motion.span
+            key="moon"
+            initial={{ rotate: 90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: -90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="block"
+          >
+            <Moon size={16} weight="duotone" />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </button>
+  );
+}

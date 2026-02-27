@@ -1,0 +1,71 @@
+"use client";
+
+import { useMotionValue, useTransform, motion, useSpring } from "framer-motion";
+import { useRef } from "react";
+
+export function MagneticButton({
+  children,
+  href,
+  className = "",
+  variant = "primary",
+  onClick,
+}: {
+  children: React.ReactNode;
+  href?: string;
+  className?: string;
+  variant?: "primary" | "secondary" | "outline";
+  onClick?: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springX = useSpring(x, { stiffness: 150, damping: 15 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((e.clientX - centerX) * 0.2);
+    y.set((e.clientY - centerY) * 0.2);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  const baseStyles =
+    "inline-flex items-center gap-2 font-medium transition-colors duration-300 cursor-pointer";
+
+  const variants = {
+    primary:
+      "bg-burgundy text-cream px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-burgundy-light active:scale-[0.98]",
+    secondary:
+      "bg-charcoal text-cream px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-dark-bg active:scale-[0.98]",
+    outline:
+      "border border-gold/30 text-gold px-7 py-3.5 rounded-lg text-sm tracking-wide hover:bg-gold/5 active:scale-[0.98]",
+  };
+
+  const Tag = href ? "a" : "button";
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="inline-block"
+    >
+      <Tag
+        href={href}
+        onClick={onClick}
+        className={`${baseStyles} ${variants[variant]} ${className}`}
+      >
+        {children}
+      </Tag>
+    </motion.div>
+  );
+}
