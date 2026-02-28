@@ -1,15 +1,22 @@
 "use client";
 
-import { ArrowSquareOut, DownloadSimple } from "@phosphor-icons/react";
+import { useState } from "react";
+import {
+  ArrowSquareOut,
+  DownloadSimple,
+  FilePdf,
+  CircleNotch,
+} from "@phosphor-icons/react";
 
 export function PDFViewer({ pdfFile }: { pdfFile: string }) {
   const pdfUrl = `/pdfs/${pdfFile}`;
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="space-y-4">
       {/* Controls */}
       <div className="flex items-center justify-between">
-        <span className="text-xs text-charcoal/40 tracking-wider uppercase">
+        <span className="text-xs text-cream/40 tracking-wider uppercase">
           Documento PDF
         </span>
         <div className="flex items-center gap-2">
@@ -17,7 +24,7 @@ export function PDFViewer({ pdfFile }: { pdfFile: string }) {
             href={pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-charcoal/10 text-xs text-charcoal/60 hover:text-burgundy hover:border-burgundy/30 transition-all duration-300"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-cream/[0.10] text-xs text-cream/60 hover:text-gold hover:border-gold/30 transition-all duration-300"
           >
             <ArrowSquareOut size={14} weight="regular" />
             Abrir
@@ -25,7 +32,7 @@ export function PDFViewer({ pdfFile }: { pdfFile: string }) {
           <a
             href={pdfUrl}
             download
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-charcoal/10 text-xs text-charcoal/60 hover:text-burgundy hover:border-burgundy/30 transition-all duration-300"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-cream/[0.10] text-xs text-cream/60 hover:text-gold hover:border-gold/30 transition-all duration-300"
           >
             <DownloadSimple size={14} weight="regular" />
             Descargar
@@ -33,11 +40,59 @@ export function PDFViewer({ pdfFile }: { pdfFile: string }) {
         </div>
       </div>
 
-      {/* Embedded viewer */}
-      <div className="rounded-xl overflow-hidden border border-charcoal/[0.08] bg-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)]">
+      {/* Mobile fallback */}
+      <div className="block md:hidden p-8 rounded-xl border border-cream/[0.08] bg-cream/[0.03] text-center">
+        <FilePdf
+          size={48}
+          weight="duotone"
+          className="mx-auto text-burgundy mb-4"
+        />
+        <p className="text-sm text-cream/60 mb-2 font-medium">
+          Documento completo disponible
+        </p>
+        <p className="text-xs text-cream/40 leading-relaxed mb-6 max-w-[35ch] mx-auto">
+          Para una mejor experiencia de lectura, descargue el documento o ábralo
+          en una nueva pestaña.
+        </p>
+        <div className="flex flex-col gap-2">
+          <a
+            href={pdfUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-burgundy text-cream text-sm font-medium active:scale-[0.98] transition-all duration-300"
+          >
+            <ArrowSquareOut size={16} weight="regular" />
+            Abrir PDF
+          </a>
+          <a
+            href={pdfUrl}
+            download
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg border border-cream/[0.10] text-cream/60 text-sm active:scale-[0.98] transition-all duration-300"
+          >
+            <DownloadSimple size={16} weight="regular" />
+            Descargar
+          </a>
+        </div>
+      </div>
+
+      {/* Desktop iframe viewer */}
+      <div className="hidden md:block rounded-xl overflow-hidden border border-cream/[0.08] bg-white shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)]">
+        {!loaded && (
+          <div className="w-full h-[80vh] min-h-[600px] flex flex-col items-center justify-center gap-3 bg-cream/[0.03]">
+            <CircleNotch
+              size={28}
+              weight="regular"
+              className="animate-spin text-cream/25"
+            />
+            <span className="text-xs text-cream/35">
+              Cargando documento...
+            </span>
+          </div>
+        )}
         <iframe
           src={pdfUrl}
-          className="w-full h-[75vh] min-h-[500px]"
+          onLoad={() => setLoaded(true)}
+          className={`w-full h-[80vh] min-h-[600px] ${loaded ? "block" : "hidden"}`}
           title="Visor de PDF"
         />
       </div>

@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { AnimatedEntry } from "@/components/ui/AnimatedEntry";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowDown } from "@phosphor-icons/react";
@@ -22,7 +20,7 @@ export function Hero() {
             <div className="flex items-center gap-3 mb-8">
               <div className="h-px w-8 bg-gold" />
               <span className="text-[11px] tracking-[0.25em] uppercase text-cream/50 font-medium">
-                Abogado Asociado · Corporación GC
+                Abogado Asociado · Corporacion GC
               </span>
             </div>
           </AnimatedEntry>
@@ -48,9 +46,9 @@ export function Hero() {
 
           <AnimatedEntry delay={0.5}>
             <p className="mt-4 text-sm text-cream/45 leading-relaxed max-w-[55ch]">
-              Más de 7 años de experiencia en litigio de alta complejidad.
-              Colaboración directa con el Dr. Óscar González Camacho,
-              co-redactor del Código Procesal Contencioso Administrativo.
+              Mas de 7 anos de experiencia en litigio de alta complejidad.
+              Colaboracion directa con el Dr. Oscar Gonzalez Camacho,
+              coredactor del Codigo Procesal Contencioso Administrativo.
             </p>
           </AnimatedEntry>
 
@@ -66,7 +64,7 @@ export function Hero() {
                 Contactar
               </MagneticButton>
               <MagneticButton href="/articulos" variant="outline">
-                Artículos
+                Articulos
               </MagneticButton>
             </div>
           </AnimatedEntry>
@@ -80,12 +78,9 @@ export function Hero() {
 
             {/* Photo */}
             <div className="relative w-[80%] md:w-[85%] rounded-[1.5rem] overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]">
-              <Image
+              <img
                 src="/images/foto-perfil.jpeg"
                 alt="Lic. Khevin Sánchez Zamora"
-                width={768}
-                height={1024}
-                priority
                 className="w-full h-auto object-cover"
               />
               {/* Bottom fade */}
@@ -95,19 +90,17 @@ export function Hero() {
             {/* Floating badge — Corporacion GC */}
             <div className="absolute bottom-6 left-0 bg-surface/95 backdrop-blur-md rounded-xl px-4 py-3 shadow-lg border border-cream/[0.06]">
               <div className="flex items-center gap-3">
-                <Image
+                <img
                   src="/images/logo-gc.png"
-                  alt="Corporación GC"
-                  width={40}
-                  height={40}
-                  className="h-9 w-auto opacity-70 dark:opacity-100 dark:brightness-0 dark:invert"
+                  alt="Corporacion GC"
+                  className="h-8 w-auto opacity-60 dark:opacity-90 dark:brightness-0 dark:invert"
                 />
                 <div>
                   <div className="text-[10px] tracking-[0.12em] text-cream/70 font-medium">
-                    ABOGADO ASOCIADO
+                    CORPORACION GC
                   </div>
                   <div className="text-[9px] text-cream/40">
-                    Corporación GC
+                    Abogado Asociado
                   </div>
                 </div>
               </div>

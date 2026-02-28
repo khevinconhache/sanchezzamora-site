@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/articles";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://sanchezzamora.cr";
+  const baseUrl = "https://corporaciongc.com";
   const articles = getAllArticles();
 
   const articleUrls = articles.map((article) => ({

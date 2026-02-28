@@ -5,6 +5,9 @@ excerpt: "Trabajo Final de Graduación que analiza la integración de inteligenc
 tags: ["Inteligencia Artificial", "Justicia Digital", "EU AI Act", "Trabajo Final de Graduación"]
 type: "pdf"
 pdfFile: "2026-01-19-2025-06-20-trabajo-final-de-graduacio-n-khevin-alberto-sanchez-zamora.pdf"
+author: "Lic. Khevin Sánchez Zamora"
+institution: "Universidad de Costa Rica"
+publicationType: "tesis"
 ---
 
 Trabajo Final de Graduación para la Licenciatura en Derecho de la Universidad de Costa Rica.

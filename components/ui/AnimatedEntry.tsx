@@ -43,9 +43,10 @@ export function AnimatedEntry({
             }
       }
       transition={{
-        duration: 0.7,
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
         delay,
-        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
@@ -96,7 +97,7 @@ export function StaggerItem({
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+          transition: { type: "spring", stiffness: 100, damping: 20 },
         },
       }}
     >

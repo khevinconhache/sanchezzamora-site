@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/pdfs/",
     },
-    sitemap: "https://sanchezzamora.cr/sitemap.xml",
+    sitemap: "https://corporaciongc.com/sitemap.xml",
   };
 }

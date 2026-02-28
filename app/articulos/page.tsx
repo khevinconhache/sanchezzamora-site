@@ -1,13 +1,22 @@
 import Link from "next/link";
-import { getAllArticles, formatDate } from "@/lib/articles";
+import {
+  getAllArticles,
+  formatDate,
+  publicationTypeLabel,
+} from "@/lib/articles";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { FilePdf, Article, ArrowLeft } from "@phosphor-icons/react/dist/ssr";
+import {
+  FilePdf,
+  Article,
+  ArrowLeft,
+  User,
+} from "@phosphor-icons/react/dist/ssr";
 
 export const metadata = {
-  title: "Artículos | Lic. Khevin Sánchez Zamora",
+  title: "Publicaciones Académicas | Corporación GC",
   description:
-    "Publicaciones y análisis jurídico en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional.",
+    "Artículos académicos, tesis y publicaciones especializadas en Derecho Administrativo, Contencioso Administrativo y Derecho Público por los abogados de Corporación GC.",
 };
 
 export default function ArticulosPage() {
@@ -31,7 +40,7 @@ export default function ArticulosPage() {
             <div className="flex items-center gap-3 mb-6">
               <div className="h-px w-8 bg-gold" />
               <span className="text-[10px] tracking-[0.25em] uppercase text-cream/35 font-medium">
-                Publicaciones
+                Publicaciones Académicas
               </span>
             </div>
 
@@ -40,8 +49,9 @@ export default function ArticulosPage() {
               <span className="text-burgundy">análisis jurídico</span>
             </h1>
             <p className="mt-4 text-sm text-cream/45 leading-relaxed max-w-[55ch]">
-              Contenido especializado en Derecho Administrativo, Contencioso
-              Administrativo y temas de actualidad jurídica.
+              Publicaciones académicas especializadas en Derecho Administrativo,
+              Contencioso Administrativo y Derecho Público. Investigación
+              jurídica de fondo, no resúmenes comerciales.
             </p>
           </div>
         </div>
@@ -54,7 +64,7 @@ export default function ArticulosPage() {
                 <Link
                   key={article.slug}
                   href={`/articulos/${article.slug}`}
-                  className="group block p-6 rounded-xl border border-cream/[0.06] bg-cream/[0.02] hover:border-burgundy/20 transition-all duration-400"
+                  className="group block p-6 rounded-xl border border-cream/[0.06] bg-cream/[0.02] hover:border-burgundy/20 active:-translate-y-[1px] transition-all duration-400"
                 >
                   <div className="flex items-center gap-2 mb-4">
                     <div
@@ -70,9 +80,11 @@ export default function ArticulosPage() {
                         <Article size={14} weight="duotone" />
                       )}
                     </div>
-                    <span className="text-[10px] tracking-wider uppercase text-cream/30">
-                      {article.type === "pdf" ? "PDF" : "Artículo"}
-                    </span>
+                    {article.publicationType && (
+                      <span className="text-[9px] tracking-wider uppercase text-cream/40 font-medium">
+                        {publicationTypeLabel(article.publicationType)}
+                      </span>
+                    )}
                     <span className="text-[10px] text-cream/20 ml-auto">
                       {formatDate(article.date)}
                     </span>
@@ -81,6 +93,18 @@ export default function ArticulosPage() {
                   <h2 className="font-display text-lg font-semibold tracking-tight text-cream group-hover:text-gold transition-colors duration-300">
                     {article.title}
                   </h2>
+
+                  {article.author && (
+                    <div className="mt-2 flex items-center gap-1.5 text-[11px] text-cream/40">
+                      <User size={11} weight="regular" />
+                      <span>{article.author}</span>
+                      {article.institution && (
+                        <span className="text-cream/25">
+                          · {article.institution}
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   <p className="mt-2 text-xs text-cream/45 leading-relaxed line-clamp-3">
                     {article.excerpt}
@@ -112,7 +136,8 @@ export default function ArticulosPage() {
                 Próximamente
               </p>
               <p className="text-xs text-cream/25 max-w-[40ch] mx-auto">
-                Los artículos y publicaciones jurídicas aparecerán aquí. Vuelve pronto.
+                Las publicaciones académicas y artículos jurídicos aparecerán
+                aquí.
               </p>
             </div>
           )}

@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X } from "@phosphor-icons/react";
+import { Logo } from "@/components/ui/Logo";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { FIRM_NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 
-export function Navbar({ navLinks = FIRM_NAV_LINKS, topOffset = false }: { navLinks?: readonly { label: string; href: string }[]; topOffset?: boolean }) {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -32,9 +31,7 @@ export function Navbar({ navLinks = FIRM_NAV_LINKS, topOffset = false }: { navLi
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 z-40 transition-all duration-500 ${
-          topOffset ? "top-8" : "top-0"
-        } ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled
             ? "bg-surface backdrop-blur-xl shadow-[0_1px_0_rgba(196,162,101,0.08)]"
             : "bg-transparent"
@@ -42,45 +39,34 @@ export function Navbar({ navLinks = FIRM_NAV_LINKS, topOffset = false }: { navLi
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <Image
-              src="/images/logo-gc.png"
-              alt="Corporación GC"
-              width={40}
-              height={40}
-              className="h-9 w-auto dark:brightness-0 dark:invert"
+          <a href="/" className="flex items-center gap-3 group">
+            <Logo
+              size={36}
+              primary="currentColor"
+              accent="#C4A265"
+              className="text-cream"
             />
             <div className="hidden sm:block">
-              <div className="text-[13px] font-semibold tracking-[0.22em] text-cream leading-none">
-                CORPORACIÓN GC
+              <div className="font-display text-sm font-semibold tracking-[0.15em] text-cream leading-none">
+                LIC. SÁNCHEZ ZAMORA
               </div>
-              <div className="text-[9px] tracking-[0.3em] text-cream/40 mt-1 font-light">
-                ABOGADOS
+              <div className="text-[10px] tracking-[0.25em] text-cream/40 mt-0.5">
+                ABOGADO
               </div>
             </div>
-          </Link>
+          </a>
 
           {/* Desktop links + toggle */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) =>
-              link.href.startsWith("/") ? (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-xs tracking-[0.12em] uppercase text-cream/60 hover:text-gold transition-colors duration-300"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-xs tracking-[0.12em] uppercase text-cream/60 hover:text-gold transition-colors duration-300"
-                >
-                  {link.label}
-                </a>
-              )
-            )}
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-xs tracking-[0.12em] uppercase text-cream/60 hover:text-gold transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            ))}
             <ThemeToggle />
           </div>
 
@@ -90,7 +76,7 @@ export function Navbar({ navLinks = FIRM_NAV_LINKS, topOffset = false }: { navLi
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 text-cream/70 hover:text-gold transition-colors"
-              aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-label={mobileOpen ? "Cerrar menu" : "Abrir menu"}
             >
               {mobileOpen ? <X size={22} weight="light" /> : <List size={22} weight="light" />}
             </button>
@@ -109,23 +95,17 @@ export function Navbar({ navLinks = FIRM_NAV_LINKS, topOffset = false }: { navLi
             className="fixed inset-0 z-50 bg-surface"
           >
             <div className="flex items-center justify-between px-6 h-16">
-              <Image
-                src="/images/logo-gc.png"
-                alt="Corporación GC"
-                width={36}
-                height={36}
-                className="h-8 w-auto dark:brightness-0 dark:invert"
-              />
+              <Logo size={32} primary="currentColor" accent="#C4A265" className="text-cream" />
               <button
                 onClick={() => setMobileOpen(false)}
                 className="p-2 text-cream/70"
-                aria-label="Cerrar menú"
+                aria-label="Cerrar menu"
               >
                 <X size={22} weight="light" />
               </button>
             </div>
             <div className="flex flex-col items-start gap-1 px-6 pt-8">
-              {navLinks.map((link, i) => (
+              {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
@@ -141,7 +121,7 @@ export function Navbar({ navLinks = FIRM_NAV_LINKS, topOffset = false }: { navLi
             </div>
             <div className="absolute bottom-12 left-6 right-6">
               <div className="text-xs tracking-[0.2em] text-cream/30 uppercase">
-                Corporación GC
+                Corporacion GC
               </div>
             </div>
           </motion.div>

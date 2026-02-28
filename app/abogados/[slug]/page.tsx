@@ -1,0 +1,220 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { Hero } from "@/components/sections/Hero";
+import { Credentials } from "@/components/sections/Credentials";
+import { About } from "@/components/sections/About";
+import { Experience } from "@/components/sections/Experience";
+import { Publications } from "@/components/sections/Publications";
+import { Contact } from "@/components/sections/Contact";
+import { getAllArticles } from "@/lib/articles";
+import {
+  TEAM,
+  FIRM,
+} from "@/lib/constants";
+
+// Generate static params for all team members
+export function generateStaticParams() {
+  return TEAM.map((member) => ({ slug: member.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const member = TEAM.find((m) => m.slug === slug);
+  if (!member) return {};
+
+  return {
+    title: `${member.name} | ${member.role} · Corporación GC`,
+    description: member.shortBio,
+    openGraph: {
+      title: `${member.name} | ${member.role} · Corporación GC`,
+      description: member.shortBio,
+      url: `${FIRM.url}/abogados/${member.slug}`,
+      siteName: FIRM.name,
+      locale: FIRM.locale,
+      type: "profile",
+    },
+  };
+}
+
+export default async function AttorneyProfile({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const member = TEAM.find((m) => m.slug === slug);
+  if (!member) return notFound();
+
+  // Khevin gets his full personal page
+  if (member.slug === "khevin-sanchez") {
+    return <KhevinProfile />;
+  }
+
+  // Other attorneys get a basic profile
+  return <BasicProfile member={member} />;
+}
+
+// ─── Khevin's Full Profile (reuses existing components) ───
+
+function KhevinProfile() {
+  const articles = getAllArticles().map((a) => ({
+    slug: a.slug,
+    title: a.title,
+    excerpt: a.excerpt,
+    date: a.date,
+    type: a.type,
+    tags: [...a.tags],
+  }));
+
+  const profileNavLinks = [
+    { label: "Inicio", href: "#inicio" },
+    { label: "Perfil", href: "#perfil" },
+    { label: "Trayectoria", href: "#trayectoria" },
+    { label: "Artículos", href: "/articulos" },
+    { label: "Contacto", href: "#contacto" },
+  ] as const;
+
+  return (
+    <>
+      {/* Back to firm link */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-burgundy-dark">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center h-8">
+          <Link
+            href="/"
+            className="text-[10px] tracking-[0.15em] uppercase text-white/60 hover:text-gold transition-colors duration-300 flex items-center gap-1.5"
+          >
+            <span>&larr;</span>
+            <span>Volver a Corporación GC</span>
+          </Link>
+        </div>
+      </div>
+      <div className="pt-8">
+        <Navbar navLinks={profileNavLinks} topOffset />
+        <main>
+          <Hero />
+          <Credentials />
+          <About />
+          <Experience />
+          <Publications articles={articles} />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
+
+// ─── Basic Profile for other attorneys ───
+
+function BasicProfile({
+  member,
+}: {
+  member: (typeof TEAM)[number];
+}) {
+  function getInitials(name: string) {
+    return name
+      .replace(/^(Dr\.|Lic\.|Licda\.)\s+/i, "")
+      .split(" ")
+      .filter((w) => w.length > 1)
+      .slice(0, 2)
+      .map((w) => w[0])
+      .join("")
+      .toUpperCase();
+  }
+
+  return (
+    <>
+      {/* Back to firm link */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-burgundy-dark">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center h-8">
+          <Link
+            href="/"
+            className="text-[10px] tracking-[0.15em] uppercase text-white/60 hover:text-gold transition-colors duration-300 flex items-center gap-1.5"
+          >
+            <span>&larr;</span>
+            <span>Volver a Corporación GC</span>
+          </Link>
+        </div>
+      </div>
+      <div className="pt-8">
+        <Navbar navLinks={[{ label: "Inicio", href: "/" }]} topOffset />
+        <main>
+          <section className="relative min-h-[70dvh] bg-surface overflow-hidden flex items-center">
+            <div className="absolute top-0 right-0 w-[60%] h-full bg-gradient-to-l from-burgundy/[0.08] to-transparent pointer-events-none hidden dark:block" />
+
+            <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-32 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_0.6fr] gap-12 items-center">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="h-px w-8 bg-gold" />
+                    <span className="text-[11px] tracking-[0.25em] uppercase text-cream/50 font-medium">
+                      {member.role} · Corporación GC
+                    </span>
+                  </div>
+
+                  <h1 className="font-display text-4xl md:text-6xl lg:text-7xl tracking-tighter leading-none text-cream mb-6">
+                    {member.name}
+                  </h1>
+
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-1 h-8 bg-burgundy rounded-full" />
+                    <p className="text-base md:text-lg text-cream/65 leading-relaxed max-w-[50ch]">
+                      {member.shortBio}
+                    </p>
+                  </div>
+
+                  {/* Areas */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {member.areas.map((area) => (
+                      <span
+                        key={area}
+                        className="px-3 py-1 rounded-lg text-xs tracking-wide bg-cream/[0.08] text-cream/60 border border-cream/[0.08]"
+                      >
+                        {area}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Languages */}
+                  <div className="text-xs text-cream/40">
+                    Idiomas: {member.languages.join(", ")}
+                  </div>
+                </div>
+
+                {/* Photo or placeholder */}
+                <div className="flex justify-center">
+                  {member.photo ? (
+                    <div className="w-64 h-80 rounded-[1.5rem] overflow-hidden border border-cream/[0.08] shadow-[0_20px_60px_-20px_rgba(0,0,0,0.5)]">
+                      <Image
+                        src={member.photo}
+                        alt={member.name}
+                        width={512}
+                        height={640}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-64 h-80 rounded-[1.5rem] bg-burgundy/10 border border-cream/[0.08] flex items-center justify-center">
+                      <span className="font-display text-6xl font-semibold text-gold/40">
+                        {getInitials(member.name)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}

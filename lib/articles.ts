@@ -12,11 +12,29 @@ export type ArticleMeta = {
   tags: string[];
   type: "article" | "pdf";
   pdfFile?: string;
+  author?: string;
+  institution?: string;
+  publicationType?: "tesis" | "articulo" | "ponencia" | "libro" | "ley";
 };
 
 export type Article = ArticleMeta & {
   content: string;
 };
+
+function extractMeta(data: Record<string, unknown>, slug: string): ArticleMeta {
+  return {
+    slug,
+    title: (data.title as string) || "Sin título",
+    date: (data.date as string) || "",
+    excerpt: (data.excerpt as string) || "",
+    tags: (data.tags as string[]) || [],
+    type: (data.type as "article" | "pdf") || "article",
+    pdfFile: data.pdfFile as string | undefined,
+    author: data.author as string | undefined,
+    institution: data.institution as string | undefined,
+    publicationType: data.publicationType as ArticleMeta["publicationType"],
+  };
+}
 
 export function getAllArticles(): ArticleMeta[] {
   if (!fs.existsSync(ARTICLES_DIR)) return [];
@@ -28,16 +46,7 @@ export function getAllArticles(): ArticleMeta[] {
   const articles = files.map((file) => {
     const raw = fs.readFileSync(path.join(ARTICLES_DIR, file), "utf-8");
     const { data } = matter(raw);
-
-    return {
-      slug: file.replace(/\.md$/, ""),
-      title: (data.title as string) || "Sin título",
-      date: (data.date as string) || "",
-      excerpt: (data.excerpt as string) || "",
-      tags: (data.tags as string[]) || [],
-      type: (data.type as "article" | "pdf") || "article",
-      pdfFile: data.pdfFile as string | undefined,
-    };
+    return extractMeta(data, file.replace(/\.md$/, ""));
   });
 
   return articles.sort(
@@ -53,13 +62,7 @@ export function getArticleBySlug(slug: string): Article | null {
   const { data, content } = matter(raw);
 
   return {
-    slug,
-    title: (data.title as string) || "Sin título",
-    date: (data.date as string) || "",
-    excerpt: (data.excerpt as string) || "",
-    tags: (data.tags as string[]) || [],
-    type: (data.type as "article" | "pdf") || "article",
-    pdfFile: data.pdfFile as string | undefined,
+    ...extractMeta(data, slug),
     content,
   };
 }
@@ -75,4 +78,18 @@ export function formatDate(dateStr: string): string {
   } catch {
     return dateStr;
   }
+}
+
+/** Map publicationType to a Spanish display label */
+export function publicationTypeLabel(
+  type?: ArticleMeta["publicationType"]
+): string {
+  const labels: Record<string, string> = {
+    tesis: "Tesis",
+    articulo: "Artículo",
+    ponencia: "Ponencia",
+    libro: "Libro",
+    ley: "Ley",
+  };
+  return type ? labels[type] || type : "Artículo";
 }

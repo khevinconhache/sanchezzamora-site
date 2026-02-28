@@ -4,6 +4,9 @@ date: "2025-06-15"
 excerpt: "Análisis de la integración de sistemas de inteligencia artificial en el ámbito judicial, desde el marco normativo de la Unión Europea, con propuesta concreta para Costa Rica."
 tags: ["Inteligencia Artificial", "Justicia Digital", "EU AI Act"]
 type: "article"
+author: "Lic. Khevin Sánchez Zamora"
+institution: "Universidad de Costa Rica"
+publicationType: "articulo"
 ---
 
 ## Introducción

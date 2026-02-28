@@ -1,9 +1,304 @@
+// ─── Firma (Homepage) ───
+
+export const FIRM = {
+  name: "Corporación GC",
+  title: "Corporación GC | Abogados · Derecho Público",
+  description:
+    "Bufete de abogados especializado en Derecho Público. Fundado por el Dr. Óscar González Camacho, ex-Magistrado de la Corte Suprema de Justicia y co-redactor del Código Procesal Contencioso Administrativo.",
+  url: "https://corporaciongc.com",
+  locale: "es_CR",
+} as const;
+
+export const FIRM_CONTACT = {
+  email: "info@corporaciongc.com",
+  phone: "+506 8317-9564",
+  phoneRaw: "50683179564",
+  location: "OFIDENT, Barrio Dent, San José, Costa Rica",
+  hours: "Lunes a Viernes, 9:00 am – 6:00 pm",
+  mapsEmbed:
+    "https://maps.google.com/maps?q=Ofident,+Barrio+Dent,+Montes+de+Oca,+San+Jos%C3%A9,+Costa+Rica&t=&z=17&ie=UTF8&iwloc=B&output=embed",
+  whatsappMessage:
+    "Hola, me gustaría coordinar una consulta jurídica con Corporación GC.",
+} as const;
+
+export const FIRM_NAV_LINKS = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "La Firma", href: "#la-firma" },
+  { label: "Equipo", href: "#equipo" },
+  { label: "Áreas", href: "#areas" },
+  { label: "Artículos", href: "/articulos" },
+  { label: "Contacto", href: "#contacto" },
+] as const;
+
+export const FIRM_CREDENTIALS = [
+  {
+    metric: "38+",
+    label: "Años de trayectoria jurídica",
+    detail: "Desde 1986",
+  },
+  {
+    metric: "12",
+    label: "Años como Magistrado de la Corte Suprema",
+    detail: "Sala Primera, 2002 – 2014",
+  },
+  {
+    metric: "CPCA",
+    label: "Co-redactor del Código Procesal",
+    detail: "Contencioso Administrativo",
+  },
+] as const;
+
+export const OSCAR_PROFILE = {
+  name: "Dr. Óscar González Camacho",
+  role: "Fundador y Director",
+  photo: "/images/oscar-gonzalez.jpeg",
+  heroDescription:
+    "Ex-Magistrado de la Corte Suprema de Justicia. Co-redactor del Código Procesal Contencioso Administrativo. Uno de los litigantes de mayor calado en la jurisdicción contencioso-administrativa costarricense.",
+  heroBio:
+    "Doctor en Derecho por la Universidad de Alcalá de Henares con la calificación Sobresaliente Cum Laude. Con más de 38 años de trayectoria ininterrumpida en el Derecho Público, el Dr. González Camacho forjó la jurisdicción contenciosa moderna desde la judicatura y hoy la domina desde el litigio. Desde 2015 dirige Corporación GC como uno de los abogados litigantes de mayor calado en la materia administrativa del país.",
+  education: [
+    {
+      degree: "Doctor en Derecho",
+      institution: "Universidad de Alcalá de Henares, España",
+      period: "1995 – 1998",
+      distinction: "Sobresaliente Cum Laude",
+    },
+    {
+      degree: "Especialista en Derecho Constitucional y Ciencia Política",
+      institution: "Centro de Estudios Políticos y Constitucionales, España",
+      period: "1995 – 1998",
+    },
+    {
+      degree: "Especialista en Derecho Público",
+      institution: "Universidad de Costa Rica",
+      period: "1990 – 1992",
+      distinction: "Graduación de Honor",
+    },
+    {
+      degree: "Licenciado en Derecho y Notario Público",
+      institution: "Universidad de Costa Rica",
+      period: "1980 – 1986",
+    },
+  ],
+  career: [
+    {
+      role: "Fundador y Director — Litigante",
+      org: "Corporación GC",
+      period: "2015 – Presente",
+      description:
+        "Uno de los litigantes de mayor calado en la jurisdicción contencioso-administrativa costarricense. Litigio de alto nivel ante el TCA, Sala Primera, Sala Constitucional y diversas instancias administrativas. Dirección estratégica del bufete y formación de un equipo de abogados especializados en Derecho Público.",
+      highlight: true,
+    },
+    {
+      role: "Magistrado",
+      org: "Sala Primera, Corte Suprema de Justicia",
+      period: "2002 – 2014",
+      description:
+        "Magistrado de la Sala Primera de la Corte Suprema de Justicia durante 12 años. Co-redactor del Código Procesal Contencioso Administrativo (Ley N.° 8508). Coordinador de la Jurisdicción Contencioso-Administrativa (2003-2010, 2012) y de la Comisión de Asuntos Ambientales del Poder Judicial (2008-2014).",
+      highlight: false,
+    },
+    {
+      role: "Juez Superior",
+      org: "Tribunal Contencioso Administrativo",
+      period: "1996 – 2002",
+      description:
+        "Juez Superior del Tribunal de lo Contencioso Administrativo y Magistrado Suplente de la Corte Suprema (1999-2002). Contribución directa al desarrollo de la jurisprudencia administrativa costarricense.",
+      highlight: false,
+    },
+    {
+      role: "Juez de Primera Instancia",
+      org: "Juzgado Contencioso Administrativo",
+      period: "1986 – 1992",
+      description:
+        "Inicio de la carrera judicial en materia contencioso-administrativa. Funcionario del Juzgado Primero Contencioso Administrativo desde 1984.",
+      highlight: false,
+    },
+  ],
+  teaching: [
+    "Profesor de Doctorado y Maestría en Derecho Público — Universidad de Costa Rica",
+    "Profesor de Derecho Constitucional y Administrativo — UCR",
+    "Profesor de Doctorado y Licenciatura — Escuela Libre de Derecho",
+    "Instructor — Escuela Judicial del Poder Judicial",
+  ],
+  publications: [
+    {
+      type: "law" as const,
+      title: "Co-redactor del Código Procesal Contencioso Administrativo",
+      detail: "Ley N.° 8508, 28 de abril de 2006. Pieza fundamental de la jurisdicción contenciosa moderna.",
+    },
+    {
+      type: "book" as const,
+      title: "Justicia Administrativa (Tomos I, II y III)",
+      detail: "Editorial Investigaciones Jurídicas, 2002. Obra de referencia sobre el control judicial pleno de la Administración Pública, la inactividad administrativa y las medidas cautelares positivas.",
+    },
+    {
+      type: "book" as const,
+      title: "El Nuevo Proceso Contencioso Administrativo",
+      detail: "Editorial Jurídica Continental / Escuela Judicial, 2006. Obra colectiva sobre la implementación del CPCA.",
+    },
+    {
+      type: "book" as const,
+      title: "Consideraciones Prácticas en torno al Proceso Ejecutivo",
+      detail: "Escuela Judicial, 1995.",
+    },
+  ],
+  conferences:
+    "Conferencista internacional en Colombia, Bolivia, Ecuador, Argentina, Alemania, Portugal, España y Estados Unidos.",
+  languages: ["Español", "Francés"],
+} as const;
+
+export const TEAM = [
+  {
+    slug: "oscar-gonzalez",
+    name: "Dr. Óscar González Camacho",
+    role: "Fundador y Director",
+    photo: "/images/oscar-gonzalez.jpeg",
+    shortBio:
+      "Ex-Magistrado de la Corte Suprema de Justicia. Co-redactor del CPCA. Más de 38 años de trayectoria en Derecho Público.",
+    areas: ["Derecho Administrativo", "Contencioso Administrativo", "Derecho Constitucional"],
+    languages: ["Español", "Francés"],
+    featured: true,
+  },
+  {
+    slug: "khevin-sanchez",
+    name: "Lic. Khevin Sánchez Zamora",
+    role: "Abogado Asociado",
+    photo: "/images/foto-perfil.jpeg",
+    shortBio:
+      "Más de 7 años de experiencia en litigio. 3er mejor promedio en el Examen de Excelencia del Colegio de Abogados, 2025. Egresado UCR.",
+    areas: ["Derecho Administrativo", "Contencioso Administrativo", "Derecho Constitucional", "Contratación Pública"],
+    languages: ["Español"],
+    featured: true,
+  },
+  {
+    slug: "katherine-gonzalez",
+    name: "Licda. Katherine González",
+    role: "Abogada Asociada",
+    photo: null,
+    shortBio:
+      "Master en Derecho Público por la UCR. Licenciada en Derecho y Notaria Pública. Miembro del Colegio de Abogados desde 2019.",
+    areas: ["Derecho Administrativo", "Derecho Público", "Derecho Notarial"],
+    languages: ["Español", "Inglés", "Italiano", "Francés"],
+    featured: false,
+  },
+  {
+    slug: "mariana-montero",
+    name: "Licda. Mariana Montero Acuña",
+    role: "Abogada Asociada",
+    photo: null,
+    shortBio:
+      "Licenciada en Derecho con mención en Derechos Humanos, UCR. Maestranda en Derecho Público, UCR.",
+    areas: ["Derecho Administrativo", "Derechos Humanos", "Derecho Público"],
+    languages: ["Español", "Inglés", "Francés"],
+    featured: false,
+  },
+  {
+    slug: "esteban-perez",
+    name: "Lic. Esteban Pérez Herrera",
+    role: "Abogado Asociado",
+    photo: null,
+    shortBio:
+      "Licenciado en Derecho con mención en Derecho Tributario, UCR. Especialista en Derecho Notarial y Registral. Maestrando en Derecho Público, UCR.",
+    areas: ["Derecho Tributario", "Derecho Notarial y Registral", "Derecho Público"],
+    languages: ["Español", "Inglés"],
+    featured: false,
+  },
+  {
+    slug: "jose-carlos-solano",
+    name: "Lic. José Carlos Solano Salas",
+    role: "Abogado Asociado",
+    photo: null,
+    shortBio:
+      "Licenciado en Derecho con Excelencia Académica, UCR. Estudios en Filosofía. Especialidad en Derecho Notarial y Registral.",
+    areas: ["Derecho Ambiental", "Derecho Civil", "Derecho Notarial y Registral"],
+    languages: ["Español", "Inglés", "Alemán"],
+    featured: false,
+  },
+] as const;
+
+export const FIRM_PRACTICE_AREAS = [
+  {
+    title: "Derecho Administrativo",
+    description:
+      "Defensa y asesoría en procedimientos ante la Administración Pública, recursos ordinarios y extraordinarios.",
+    icon: "Scales" as const,
+  },
+  {
+    title: "Contencioso Administrativo",
+    description:
+      "Litigio estratégico ante el Tribunal Contencioso Administrativo en demandas contra el Estado y entes públicos.",
+    icon: "Gavel" as const,
+  },
+  {
+    title: "Derecho Constitucional",
+    description:
+      "Recursos de amparo, acciones de inconstitucionalidad y habeas corpus ante la Sala Constitucional.",
+    icon: "ShieldCheck" as const,
+  },
+  {
+    title: "Contratación Pública",
+    description:
+      "Asesoría y litigio en licitaciones, concursos públicos, contratos administrativos y recursos de objeción.",
+    icon: "FileText" as const,
+  },
+  {
+    title: "Derecho Inmobiliario",
+    description:
+      "Asesoría en concesiones, desarrollo inmobiliario y regulación de la propiedad.",
+    icon: "Buildings" as const,
+  },
+  {
+    title: "Derecho Notarial y Registral",
+    description:
+      "Servicios notariales y gestión registral de instrumentos públicos y privados.",
+    icon: "Stamp" as const,
+  },
+  {
+    title: "Derecho Corporativo",
+    description:
+      "Constitución de sociedades, gobierno corporativo, fusiones y reestructuraciones empresariales.",
+    icon: "Briefcase" as const,
+  },
+  {
+    title: "Derecho Tributario",
+    description:
+      "Planificación fiscal, defensa en procedimientos tributarios y consultoría impositiva.",
+    icon: "Bank" as const,
+  },
+  {
+    title: "Propiedad Intelectual",
+    description:
+      "Protección de marcas, patentes, datos personales y derechos de autor.",
+    icon: "Lightbulb" as const,
+  },
+  {
+    title: "Derecho Laboral",
+    description:
+      "Asesoría y litigio en relaciones laborales públicas y privadas, despidos y prestaciones.",
+    icon: "UsersThree" as const,
+  },
+  {
+    title: "Derecho Ambiental",
+    description:
+      "Consultoría y litigio en materia de regulación ambiental, permisos y estudios de impacto.",
+    icon: "Leaf" as const,
+  },
+  {
+    title: "Derecho Civil",
+    description:
+      "Contratos, obligaciones, responsabilidad civil y resolución de conflictos patrimoniales.",
+    icon: "Handshake" as const,
+  },
+] as const;
+
+// ─── Perfil Individual: Khevin Sánchez ───
+
 export const SITE = {
   name: "Lic. Khevin Sánchez Zamora",
   title: "Lic. Khevin Sánchez Zamora | Abogado Asociado · Corporación GC",
   description:
     "Abogado Asociado en Corporación GC. Más de 7 años de experiencia en Derecho Administrativo, Contencioso Administrativo y Derecho Constitucional. Carnet 37920.",
-  url: "https://sanchezzamora.cr",
+  url: "https://corporaciongc.com",
   locale: "es_CR",
   carnet: "37920",
 } as const;

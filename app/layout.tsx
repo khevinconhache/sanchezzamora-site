@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { SITE } from "@/lib/constants";
+import { FIRM } from "@/lib/constants";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
@@ -18,21 +18,29 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: SITE.title,
-  description: SITE.description,
-  metadataBase: new URL(SITE.url),
+  title: FIRM.title,
+  description: FIRM.description,
+  metadataBase: new URL(FIRM.url),
   openGraph: {
-    title: SITE.title,
-    description: SITE.description,
-    url: SITE.url,
-    siteName: SITE.name,
-    locale: SITE.locale,
+    title: FIRM.title,
+    description: FIRM.description,
+    url: FIRM.url,
+    siteName: FIRM.name,
+    locale: FIRM.locale,
     type: "website",
+    images: [
+      {
+        url: "/images/logo-gc.png",
+        width: 512,
+        height: 512,
+        alt: "Corporación GC — Abogados · Derecho Público",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: SITE.title,
-    description: SITE.description,
+    card: "summary_large_image",
+    title: FIRM.title,
+    description: FIRM.description,
   },
   icons: {
     icon: "/favicon.svg",

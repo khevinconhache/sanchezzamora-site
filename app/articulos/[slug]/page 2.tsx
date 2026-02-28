@@ -1,13 +1,7 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import {
-  getAllArticles,
-  getArticleBySlug,
-  formatDate,
-  publicationTypeLabel,
-} from "@/lib/articles";
+import { getAllArticles, getArticleBySlug, formatDate } from "@/lib/articles";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PDFViewer } from "@/components/article/PDFViewer";
@@ -15,7 +9,6 @@ import {
   ArrowLeft,
   CalendarBlank,
   Tag,
-  User,
 } from "@phosphor-icons/react/dist/ssr";
 
 export async function generateStaticParams() {
@@ -32,7 +25,7 @@ export async function generateMetadata({
   const article = getArticleBySlug(slug);
   if (!article) return {};
   return {
-    title: `${article.title} | Corporación GC`,
+    title: `${article.title} | Lic. Khevin Sánchez Zamora`,
     description: article.excerpt,
   };
 }
@@ -46,81 +39,30 @@ export default async function ArticlePage({
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
-  const isPdf = article.type === "pdf" && article.pdfFile;
-
-  /* JSON-LD for academic SEO */
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    headline: article.title,
-    description: article.excerpt,
-    datePublished: article.date,
-    ...(article.author
-      ? {
-          author: {
-            "@type": "Person",
-            name: article.author,
-            ...(article.institution
-              ? {
-                  affiliation: {
-                    "@type": "Organization",
-                    name: article.institution,
-                  },
-                }
-              : {}),
-          },
-        }
-      : {}),
-    publisher: {
-      "@type": "Organization",
-      name: "Corporación GC",
-      url: "https://corporaciongc.com",
-    },
-    keywords: article.tags.join(", "),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <Navbar />
       <main className="bg-surface min-h-[100dvh]">
         <div className="pt-28 md:pt-36 pb-20 md:pb-28">
-          <div
-            className={`${isPdf ? "max-w-[1000px]" : "max-w-[800px]"} mx-auto px-6 md:px-10`}
-          >
+          <div className="max-w-[800px] mx-auto px-6 md:px-10">
             {/* Back */}
-            <Link
+            <a
               href="/articulos"
               className="inline-flex items-center gap-1.5 text-xs text-cream/40 hover:text-gold transition-colors duration-300 mb-10"
             >
               <ArrowLeft size={14} weight="regular" />
-              Todas las publicaciones
-            </Link>
+              Todos los articulos
+            </a>
 
-            {/* Meta row */}
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              {/* Publication type badge */}
-              {article.publicationType && (
-                <span className="px-2.5 py-1 rounded-md text-[9px] tracking-wider uppercase font-medium bg-burgundy/[0.10] text-burgundy dark:text-burgundy-light">
-                  {publicationTypeLabel(article.publicationType)}
-                </span>
-              )}
-
+            {/* Meta */}
+            <div className="flex flex-wrap items-center gap-4 mb-6">
               <div className="flex items-center gap-1.5 text-xs text-cream/35">
                 <CalendarBlank size={13} weight="regular" />
                 {formatDate(article.date)}
               </div>
-
               {article.tags.length > 0 && (
                 <div className="flex items-center gap-1.5">
-                  <Tag
-                    size={13}
-                    weight="regular"
-                    className="text-cream/35"
-                  />
+                  <Tag size={13} weight="regular" className="text-cream/35" />
                   <div className="flex gap-1.5">
                     {article.tags.map((tag) => (
                       <span
@@ -134,19 +76,6 @@ export default async function ArticlePage({
                 </div>
               )}
             </div>
-
-            {/* Author + institution */}
-            {article.author && (
-              <div className="flex items-center gap-1.5 text-xs text-cream/45 mb-6">
-                <User size={13} weight="regular" className="shrink-0" />
-                <span>{article.author}</span>
-                {article.institution && (
-                  <span className="text-cream/30">
-                    · {article.institution}
-                  </span>
-                )}
-              </div>
-            )}
 
             {/* Title */}
             <h1 className="font-display text-2xl md:text-4xl font-semibold tracking-tighter leading-[1.1] text-cream mb-4">
@@ -162,8 +91,8 @@ export default async function ArticlePage({
             <div className="h-px bg-cream/[0.06] mb-10" />
 
             {/* Content */}
-            {isPdf ? (
-              <PDFViewer pdfFile={article.pdfFile!} />
+            {article.type === "pdf" && article.pdfFile ? (
+              <PDFViewer pdfFile={article.pdfFile} />
             ) : (
               <div className="prose-article">
                 <MDXRemote
@@ -179,13 +108,13 @@ export default async function ArticlePage({
 
             {/* Bottom nav */}
             <div className="mt-16 pt-8 border-t border-cream/[0.06]">
-              <Link
+              <a
                 href="/articulos"
                 className="inline-flex items-center gap-1.5 text-xs text-cream/40 hover:text-gold transition-colors duration-300"
               >
                 <ArrowLeft size={14} weight="regular" />
-                Volver a publicaciones
-              </Link>
+                Volver a articulos
+              </a>
             </div>
           </div>
         </div>

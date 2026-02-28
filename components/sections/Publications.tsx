@@ -42,8 +42,8 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
 
             <AnimatedEntry delay={0.2}>
               <p className="mt-4 text-sm text-cream/55 leading-relaxed max-w-[50ch]">
-                Contenido especializado en Derecho Administrativo, Contencioso
-                Administrativo y temas de actualidad jurídica.
+                Publicaciones académicas especializadas en Derecho Público.
+                Investigación jurídica de fondo, no resúmenes comerciales.
               </p>
             </AnimatedEntry>
           </div>
@@ -67,7 +67,7 @@ export function Publications({ articles }: { articles: ArticlePreview[] }) {
               <StaggerItem key={article.slug}>
                 <Link
                   href={`/articulos/${article.slug}`}
-                  className={`group block p-6 rounded-xl border border-cream/[0.08] bg-cream/[0.03] hover:border-burgundy/20 transition-all duration-400 ${
+                  className={`group block p-6 rounded-xl border border-cream/[0.08] bg-cream/[0.03] hover:border-burgundy/20 active:scale-[0.98] active:-translate-y-[1px] transition-all duration-400 ${
                     i === 0 ? "md:row-span-2" : ""
                   }`}
                 >

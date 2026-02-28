@@ -1,44 +1,51 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/sections/Hero";
+import { FirmHero } from "@/components/sections/FirmHero";
 import { Credentials } from "@/components/sections/Credentials";
-import { About } from "@/components/sections/About";
-import { Experience } from "@/components/sections/Experience";
+import { FirmAbout } from "@/components/sections/FirmAbout";
+import { TeamSection } from "@/components/sections/TeamSection";
+import { FirmPracticeAreas } from "@/components/sections/FirmPracticeAreas";
 import { Publications } from "@/components/sections/Publications";
-import { Contact } from "@/components/sections/Contact";
+import { FirmContact } from "@/components/sections/FirmContact";
 import { getAllArticles } from "@/lib/articles";
+import { FIRM_CREDENTIALS } from "@/lib/constants";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Attorney",
-  name: "Lic. Khevin Sánchez Zamora",
-  jobTitle: "Abogado Asociado",
-  url: "https://sanchezzamora.cr",
-  telephone: "+506 8451-4002",
-  email: "ksanchez@corporaciongc.com",
+  "@type": "LegalService",
+  name: "Corporación GC",
+  description:
+    "Bufete de abogados especializado en Derecho Público. Fundado por el Dr. Óscar González Camacho, ex-Magistrado de la Corte Suprema de Justicia.",
+  url: "https://corporaciongc.com",
+  telephone: "+506 8317-9564",
+  email: "info@corporaciongc.com",
+  image: "https://corporaciongc.com/images/logo-gc.png",
+  priceRange: "Consultar",
+  areaServed: {
+    "@type": "Country",
+    name: "Costa Rica",
+  },
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Cartago",
+    streetAddress: "OFIDENT, Barrio Dent",
+    addressLocality: "San José",
+    addressRegion: "San José",
     addressCountry: "CR",
   },
-  worksFor: {
-    "@type": "LegalService",
-    name: "Corporación GC",
+  founder: {
+    "@type": "Person",
+    name: "Dr. Óscar González Camacho",
+    jobTitle: "Fundador y Director",
   },
   knowsAbout: [
     "Derecho Administrativo",
     "Contencioso Administrativo",
     "Derecho Constitucional",
     "Contratación Pública",
+    "Derecho Público",
   ],
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Universidad de Costa Rica",
-  },
-  sameAs: [
-    "https://www.linkedin.com/in/khevin-s%C3%A1nchez-16b047205/",
-    "https://www.instagram.com/lic.sanchezzamora",
-  ],
+  openingHours: "Mo-Fr 09:00-18:00",
+  sameAs: [],
 };
 
 export default function Home() {
@@ -59,12 +66,13 @@ export default function Home() {
       />
       <Navbar />
       <main>
-        <Hero />
-        <Credentials />
-        <About />
-        <Experience />
+        <FirmHero />
+        <Credentials credentials={FIRM_CREDENTIALS} />
+        <FirmAbout />
+        <TeamSection />
+        <FirmPracticeAreas />
         <Publications articles={articles} />
-        <Contact />
+        <FirmContact />
       </main>
       <Footer />
     </>
